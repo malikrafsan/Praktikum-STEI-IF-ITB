@@ -1,0 +1,39 @@
+k == 0 = not ((tesKategori t b 1) || (tesKategori t b 2) || (tesKategori t b 3) || (tesKategori t b 4))
+1/2*(a+b)c
+
+y = 0
+    nbKelipatanX m n x
+        |n >= m =
+            if n %% m == 0 then y+1
+            if n %% m /= 0 then nbKelipatanX m n-1 x
+        |n < m = y
+
+y = 0
+    nbKelipatanX m n x
+        |n >= m = do
+            if n %% m == 0 then y+1
+            else nbKelipatanX m n-1 x
+        |n < m = y
+
+isFaktor :: Int -> Int -> Int
+isFaktor y z
+    |mod y z == 0 = 1
+    |otherwise = 0
+
+
+hitungFaktor :: Int -> Int -> Int -> Int
+hitungFaktor a b x
+    |a == b = 0
+    |a < b = isFaktor x a + hitungFaktor (a+1) b x
+
+isFaktor :: Integral a => a -> a -> Bool
+isFaktor y z
+    |mod y z == 0 = True 
+    |otherwise = False 
+
+hitungFaktor :: Int -> Int -> Int -> Int
+hitungFaktor a b x
+    |a == b = 0
+    |a < b = (if isFaktor x a then 1 else 0) + hitungFaktor (a+1) b x
+
+nanti kan ada m n dan x, jadi dalam range m sampe n, berapa angka yang kelipatan dari x
